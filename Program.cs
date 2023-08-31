@@ -52,6 +52,10 @@ CheckResult();
 
 ShowResult();
 
+Console.WriteLine($"\nThank you {userName} for taking the quiz! I hope you had fun! ");
+Console.WriteLine("\nIf you would like to retake the quiz, just launch the application one more time.");
+Console.ReadLine();
+
 void WriteAnswers(string a, string b, string c, string d)
 {
     Console.WriteLine("a) {0}\tb) {1}\tc) {2}\td) {3}", a, b, c, d);
@@ -115,7 +119,6 @@ void CheckResult()
 }
 void ShowResult()
 {
-    Console.WriteLine();
     switch (userResult)
     {
         case "spring":
@@ -151,7 +154,7 @@ void ShowResult()
 }
 void AskQuestion(string question, string answerA, string answerB, string answerC, string answerD)
 {
-    Console.WriteLine($"\n{question}\n");
+    Console.WriteLine($"{question}\n");
     WriteAnswers(answerA, answerB, answerC, answerD);
     Console.WriteLine();
     CheckAnswer();
