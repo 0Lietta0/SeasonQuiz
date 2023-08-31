@@ -26,7 +26,7 @@ do
 } while (userName == "");
 
 Console.WriteLine($"\nWelcome {userName}!");
-Console.WriteLine("\nPress enten to start.");
+Console.WriteLine("\nPress enter to start.");
 
 Console.ReadLine();
 Console.Clear();
