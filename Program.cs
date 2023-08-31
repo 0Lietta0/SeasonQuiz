@@ -15,36 +15,36 @@ Console.WriteLine("Z");
 Console.ResetColor();
 Console.WriteLine("\nWhich season are you?");
 
-////-get username
-//string userName = "";
-//do
-//{
-//    Console.Write("\nWrite your username: ");
-//    readResult = Console.ReadLine();
-//    if (readResult != null)
-//        userName = readResult.Trim();
-//} while (userName == "");
+//-get username
+string userName = "";
+do
+{
+    Console.Write("\nWrite your username: ");
+    readResult = Console.ReadLine();
+    if (readResult != null)
+        userName = readResult.Trim();
+} while (userName == "");
 
-//Console.WriteLine($"\nWelcome {userName}!");
-//Console.WriteLine("\nPress enten to start.");
+Console.WriteLine($"\nWelcome {userName}!");
+Console.WriteLine("\nPress enten to start.");
 
-//Console.ReadLine();
-//Console.Clear();
+Console.ReadLine();
+Console.Clear();
 
 //-ask 5 questions(a, b, c, d)
-
+//defining variables
 string userAnswer = "";
 int answerA = 0;
 int answerB = 0;
 int answerC = 0;
 int answerD = 0;
 string userResult = "";
-
-Console.WriteLine("Which color do you like the most?.");
-WriteAnswers("green", "yellow", "red", "blue\n");
-CheckAnswer();
-CountPoints();
-
+//asking questions
+AskQuestion("Which color do you like the most?", "green", "yellow", "red", "blue");
+AskQuestion("Which weather is the best for you?", "sunny", "extremaly hot", "rainy", "freezing cold");
+AskQuestion("Choose an activity you like the most?", "gardening", "sunbathing", "walking", "skiing");
+AskQuestion("Which drink do you enjoy the most?", "green tea", "cold lemonade", "pumpkin spice latte", "hot cocoa");
+AskQuestion("What is your favourite thing to wear?", "practical raincoat", "cool sunglasses", "high-end jacket", "cozy scarf");
 
 CheckResult();
 
@@ -119,19 +119,42 @@ void ShowResult()
     switch (userResult)
     {
         case "spring":
-            Console.WriteLine("spring");
+            Console.WriteLine("You are a Spring! Just like this season, you bring " +
+                "a sense of renewal and growth wherever you go. Your vibrant personality " +
+                "and enthusiasm for new beginnings make you a breath of fresh air in any situation.");
             break;
         case "summer":
-            Console.WriteLine("summer");
+            Console.WriteLine("You are a Summer! Much like this warm and sunny season, " +
+                "you radiate positivity and energy. Your outgoing nature and love " +
+                "for adventure make you the life of the party, always ready to soak up " +
+                "the sun and create unforgettable memories.");
             break;
         case "autumn":
-            Console.WriteLine("autumn");
+            Console.WriteLine("You are an Autumn! Much like this season of change and harvest, " +
+                "you have a reflective and grounded personality. Your ability to find beauty " +
+                "in both the vibrant and fading aspects of life sets you apart. Your thoughtfulness and " +
+                "appreciation for life's transitions make you a reassuring presence during times of change.");
             break;
         case "winter":
-            Console.WriteLine("winter");
+            Console.WriteLine("You are a Winter! Similar to this time of cozy snowfalls " +
+                "and warm beverages, you have a calm and introspective demeanor. " +
+                "Your thoughtfulness and ability to find beauty in simplicity make you " +
+                "a comforting presence during the chilly days of life.");
             break;
         case "mixed":
-            Console.WriteLine("mixed");
+            Console.WriteLine("Your result is Mixed! Just like the changing seasons, " +
+                "you embody a bit of everything. You're adaptable and open-minded, " +
+                "able to connect with people from all walks of life. Your versatility and " +
+                "willingness to embrace change make you a true chameleon.");
             break;
     }
+}
+void AskQuestion(string question, string answerA, string answerB, string answerC, string answerD)
+{
+    Console.WriteLine($"\n{question}\n");
+    WriteAnswers(answerA, answerB, answerC, answerD);
+    Console.WriteLine();
+    CheckAnswer();
+    CountPoints();
+    Console.Clear();
 }
