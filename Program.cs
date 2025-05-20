@@ -3,7 +3,7 @@ using System.Xml;
 
 string? readResult;
 
-//-welcome user
+//welcome user - colored text
 Console.ForegroundColor = ConsoleColor.Green;
 Console.Write("\tQ");
 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -15,7 +15,7 @@ Console.WriteLine("Z");
 Console.ResetColor();
 Console.WriteLine("\nWhich season are you?");
 
-//-get username
+//get username
 string userName = "";
 do
 {
@@ -31,7 +31,8 @@ Console.WriteLine("\nPress enter to start.");
 Console.ReadLine();
 Console.Clear();
 
-//-ask 5 questions(a, b, c, d)
+//ask 5 questions(a, b, c, d)
+
 //defining variables
 string userAnswer = "";
 int answerA = 0;
@@ -39,6 +40,7 @@ int answerB = 0;
 int answerC = 0;
 int answerD = 0;
 string userResult = "";
+
 //asking questions
 AskQuestion("Which color do you like the most?", "green", "yellow", "red", "blue");
 AskQuestion("Which weather is the best for you?", "sunny", "extremaly hot", "rainy", "freezing cold");
@@ -48,7 +50,7 @@ AskQuestion("What is your favourite thing to wear?", "practical raincoat", "cool
 
 CheckResult();
 
-//- display result
+//display result
 
 ShowResult();
 
@@ -56,6 +58,15 @@ Console.WriteLine($"\nThank you {userName} for taking the quiz! I hope you had f
 Console.WriteLine("\nIf you would like to retake the quiz, just launch the application one more time.");
 Console.ReadLine();
 
+void AskQuestion(string question, string answerA, string answerB, string answerC, string answerD)
+{
+    Console.WriteLine($"{question}\n");
+    WriteAnswers(answerA, answerB, answerC, answerD);
+    Console.WriteLine();
+    CheckAnswer();
+    CountPoints();
+    Console.Clear();
+}
 void WriteAnswers(string a, string b, string c, string d)
 {
     Console.WriteLine("a) {0}\tb) {1}\tc) {2}\td) {3}", a, b, c, d);
@@ -122,23 +133,27 @@ void ShowResult()
     switch (userResult)
     {
         case "spring":
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("You are a Spring! Just like this season, you bring " +
                 "a sense of renewal and growth wherever you go. Your vibrant personality " +
                 "and enthusiasm for new beginnings make you a breath of fresh air in any situation.");
             break;
         case "summer":
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("You are a Summer! Much like this warm and sunny season, " +
                 "you radiate positivity and energy. Your outgoing nature and love " +
                 "for adventure make you the life of the party, always ready to soak up " +
                 "the sun and create unforgettable memories.");
             break;
         case "autumn":
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("You are an Autumn! Much like this season of change and harvest, " +
                 "you have a reflective and grounded personality. Your ability to find beauty " +
                 "in both the vibrant and fading aspects of life sets you apart. Your thoughtfulness and " +
                 "appreciation for life's transitions make you a reassuring presence during times of change.");
             break;
         case "winter":
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("You are a Winter! Similar to this time of cozy snowfalls " +
                 "and warm beverages, you have a calm and introspective demeanor. " +
                 "Your thoughtfulness and ability to find beauty in simplicity make you " +
@@ -151,13 +166,5 @@ void ShowResult()
                 "willingness to embrace change make you a true chameleon.");
             break;
     }
-}
-void AskQuestion(string question, string answerA, string answerB, string answerC, string answerD)
-{
-    Console.WriteLine($"{question}\n");
-    WriteAnswers(answerA, answerB, answerC, answerD);
-    Console.WriteLine();
-    CheckAnswer();
-    CountPoints();
-    Console.Clear();
+    Console.ResetColor();
 }
